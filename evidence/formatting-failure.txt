@@ -1,0 +1,65 @@
+test_llm_call	Run Black Code Formatting Check	﻿2026-11-20T17:37:59.1136384Z ##[group]Run echo "--- Running Black Code Style Check ---"
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.1136854Z ^[[36;1mecho "--- Running Black Code Style Check ---"^[[0m
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.1137291Z ^[[36;1m# The --check flag prevents Black from modifying files; it just reports errors^[[0m
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.1137734Z ^[[36;1m# The --diff flag shows what needs to be changed^[[0m
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.1138058Z ^[[36;1mblack --check --diff .^[[0m
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.1194698Z shell: /usr/bin/bash -e {0}
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.1194968Z env:
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.1195268Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.18/x64
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.1195808Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.18/x64/lib/pkgconfig
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.1196207Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.18/x64
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.1196569Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.18/x64
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.1196926Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.18/x64
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.1197286Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.18/x64/lib
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.1197675Z ##[endgroup]
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.1282003Z --- Running Black Code Style Check ---
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2880953Z --- /home/runner/work/cicd_demo/cicd_demo/demo_make_llm_call.py	2026-11-20 17:37:51.486266+00:00
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2881656Z +++ /home/runner/work/cicd_demo/cicd_demo/demo_make_llm_call.py	2026-11-20 17:37:59.287485+00:00
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2882107Z @@ -1,25 +1,36 @@
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2882441Z  """Generate a loan-payment Python file; never execute the generated code."""
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2882836Z +
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2883014Z  import ast
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2883205Z  import os
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2883381Z  import re
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2883580Z  from pathlib import Path
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2883828Z  from dotenv import load_dotenv
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2884073Z  from google import genai
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2884290Z  
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2884465Z  load_dotenv()
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2884652Z  
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2884816Z +
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2885004Z  def main():
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2885214Z      if not os.getenv("GEMINI_API_KEY"):
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2885873Z          raise RuntimeError("GEMINI_API_KEY is not configured in repository secrets")
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2886416Z -    client=genai.Client(api_key=os.environ["GEMINI_API_KEY"],http_options={"timeout": 45000})
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2888010Z -    response=client.models.generate_content(model="gemini-3.1-flash-lite",contents="Write a Python function loan_payment(interest, term, present_value). Interest is an annual decimal rate, term is months. Handle zero interest and reject invalid negative input. Return only Python in one fenced code block. Do not import packages, access files, execute commands or make network calls.",config={"max_output_tokens":1200,"temperature":0})
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2889572Z -    match=re.search(r"```(?:python)?\s*\n(.*?)```",response.text or "",re.S)
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2889945Z +    client = genai.Client(
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2890272Z +        api_key=os.environ["GEMINI_API_KEY"], http_options={"timeout": 45000}
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2890658Z +    )
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2891015Z +    response = client.models.generate_content(
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2891309Z +        model="gemini-3.1-flash-lite",
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2892356Z +        contents="Write a Python function loan_payment(interest, term, present_value). Interest is an annual decimal rate, term is months. Handle zero interest and reject invalid negative input. Return only Python in one fenced code block. Do not import packages, access files, execute commands or make network calls.",
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2893706Z +        config={"max_output_tokens": 1200, "temperature": 0},
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2894009Z +    )
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2894281Z +    match = re.search(r"```(?:python)?\s*\n(.*?)```", response.text or "", re.S)
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2894618Z      if not match:
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2894894Z          raise ValueError("Expected one fenced Python code block")
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2895228Z -    code=match.group(1).strip()+"\n"
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2895807Z +    code = match.group(1).strip() + "\n"
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2896321Z would reformat /home/runner/work/cicd_demo/cicd_demo/demo_make_llm_call.py
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2896606Z 
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2896954Z Oh no! 💥 💔 💥
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2897175Z 1 file would be reformatted.
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2897417Z      ast.parse(code)
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2897672Z      Path("loan_payment.py").write_text(code)
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2898114Z -    print("Generated loan_payment.py; Python syntax validated. Generated code was NOT executed.")
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2898549Z +    print(
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2898899Z +        "Generated loan_payment.py; Python syntax validated. Generated code was NOT executed."
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2899294Z +    )
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2899469Z  
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2899667Z -if __name__=="__main__":
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2899884Z +
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2900064Z +if __name__ == "__main__":
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.2900281Z      main()
+test_llm_call	Run Black Code Formatting Check	2026-11-20T17:37:59.3082585Z ##[error]Process completed with exit code 1.
